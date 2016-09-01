@@ -1,7 +1,12 @@
 <html>
 <head>
-	<!-- Font awesome CDN. -->
+	<!-- Font awesome CDN -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+	
+	<!-- MUI -->
+	<link href="resources/mui/mui.min.css" rel="stylesheet" type="text/css" />
+  <script src="resources/mui/mui.min.js"></script>
+  
 	<style>
 		.todo-done{
 			text-decoration: line-through;
@@ -11,33 +16,51 @@
 
 <body>
 	
-	<todo>
-		<ul>
-			<!-- Loop all in todoList array. -->
-			<li v-for="todo in todoList">
-				<label v-bind:class="{'todo-done': todo.done}">
-					<input type="checkbox" v-bind:checked="todo.done" v-on:change="toggleDoneTodo($index)" />
-					{{ todo.text }}
-				</label>
-				
-				<!-- Remove this todo from list. -->
-				<a href="#" v-on:click.stop="removeTodo($index)">
-					<i class="fa fa-close"></i></a>
-			</li>
-		</ul>
-		
-		<!-- Remove all done todo. -->
-		
-		
-		<!-- Do method addTodo when submit -->
-		<!-- with .prevent the submit event will no longer reload the page -->
-		<form v-on:submit.prevent="addTodo">
-			<!-- Bind input to newTodoText data. -->
-			<input v-model="newTodoText" />
-			
-			<button>Add</button>
-		</form>
-	</todo>
+	<div class="mui-container">
+  <!--
+  Container is centered on page with 15px of
+  padding on either side. The inner width is
+  fluid for small viewports and has a max
+  width for larger dimensions:
+
+  * 570px (≥ 544px)
+  * 740px (≥ 768px)
+  * 960px (≥ 992px)
+  * 1170px (≥ 1200px)
+  -->
+		<todo>
+			<h2>Todo list</h2>
+			<ul>
+				<!-- Loop all in todoList array. -->
+				<li v-for="todo in todoList">
+					<label v-bind:class="{'todo-done': todo.done}">
+						<input type="checkbox" v-bind:checked="todo.done" v-on:change="toggleDoneTodo($index)" />
+						{{ todo.text }}
+					</label>
+
+					<!-- Remove this todo from list. -->
+					<a href="#" v-on:click.stop="removeTodo($index)">
+						<i class="fa fa-close"></i></a>
+				</li>
+			</ul>
+
+			<!-- Remove all done todo. -->
+
+
+			<!-- Do method addTodo when submit -->
+			<!-- with .prevent the submit event will no longer reload the page -->
+			<form v-on:submit.prevent="addTodo">
+				<div class="mui-textfield mui-textfield--float-label">
+					<!-- Bind input to newTodoText data. -->
+					<input name="newTodo" v-model="newTodoText" />
+					
+					<label for="newTodo">Add new todo.</label>
+				</div>
+
+				<button class="mui-btn mui-btn--primary">Add</button>
+			</form>
+		</todo>  
+	</div><!-- /.mui-container -->
 	
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
   <script>
