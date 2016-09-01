@@ -79,7 +79,7 @@
 				addTodo: function() {
 					var text = this.newTodoText.trim()
 					if (text) {
-						this.todoList.push({ text: text })
+						this.todoList.push({ text: text, done: false })
 						this.newTodoText = ''
 					}
 				},
