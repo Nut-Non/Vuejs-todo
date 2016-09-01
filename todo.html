@@ -7,11 +7,9 @@
 	<link href="resources/mui/mui.min.css" rel="stylesheet" type="text/css" />
   <script src="resources/mui/mui.min.js"></script>
   
-	<style>
-		.todo-done{
-			text-decoration: line-through;
-		}
-	</style>
+  <!-- CSS for this project -->
+  <link rel="stylesheet" href="resources/css/style.css">
+  
 </head>
 
 <body>
@@ -62,38 +60,10 @@
 		</todo>  
 	</div><!-- /.mui-container -->
 	
+	<!-- Vue JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
-  <script>
-    var vue_todo = new Vue({
-			el:		'todo',
-			data:	{
-				newTodoText: '',
-				todoList: [
-					{ text: 'First todo.'		, done: true },
-					{ text: 'Second todo.' 	, done: false },
-					{ text: 'Third todo.' 	,	done: true },
-				]
-			},
-			methods: {				
-				// Add new todo to the list.
-				addTodo: function() {
-					var text = this.newTodoText.trim()
-					if (text) {
-						this.todoList.push({ text: text, done: false })
-						this.newTodoText = ''
-					}
-				},
-				// Toggle done.
-				toggleDoneTodo: function(index) {
-					this.todoList[index].done	=	!this.todoList[index].done
-					
-				},
-				// Remove todo from todoList array.
-				removeTodo: function (index) {
-					this.todoList.splice(index, 1)
-				}
-			}
-		})
-  </script>
+  
+  <!-- Script for this project -->
+  <script src="resources/js/script.js"></script>
 </body>
 </html>
