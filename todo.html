@@ -1,0 +1,76 @@
+<html>
+<head>
+	<!-- Font awesome CDN. -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+	<style>
+		.todo-done{
+			text-decoration: line-through;
+		}
+	</style>
+</head>
+
+<body>
+	
+	<todo>
+		<ul>
+			<!-- Loop all in todoList array. -->
+			<li v-for="todo in todoList">
+				<label v-bind:class="{'todo-done': todo.done}">
+					<input type="checkbox" v-bind:checked="todo.done" v-on:change="toggleDoneTodo($index)" />
+					{{ todo.text }}
+				</label>
+				
+				<!-- Remove this todo from list. -->
+				<a href="#" v-on:click.stop="removeTodo($index)">
+					<i class="fa fa-close"></i></a>
+			</li>
+		</ul>
+		
+		<!-- Remove all done todo. -->
+		
+		
+		<!-- Do method addTodo when submit -->
+		<!-- with .prevent the submit event will no longer reload the page -->
+		<form v-on:submit.prevent="addTodo">
+			<!-- Bind input to newTodoText data. -->
+			<input v-model="newTodoText" />
+			
+			<button>Add</button>
+		</form>
+	</todo>
+	
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
+  <script>
+    var vue_todo = new Vue({
+			el:		'todo',
+			data:	{
+				newTodoText: '',
+				todoList: [
+					{ text: 'First todo.'		, done: true },
+					{ text: 'Second todo.' 	, done: false },
+					{ text: 'Third todo.' 	,	done: true },
+				]
+			},
+			methods: {				
+				// Add new todo to the list.
+				addTodo: function() {
+					var text = this.newTodoText.trim()
+					if (text) {
+						this.todoList.push({ text: text })
+						this.newTodoText = ''
+					}
+				},
+				// Toggle done.
+				toggleDoneTodo: function(index) {
+					this.todoList[index].done	=	!this.todoList[index].done
+					
+				},
+				// Remove todo from todoList array.
+				removeTodo: function (index) {
+					this.todoList.splice(index, 1)
+				}
+			}
+		})
+  </script>
+</body>
+</html>
