@@ -1,11 +1,17 @@
 <html>
 <head>
+	<!-- jQuery CDN -->
+	<script src="https://code.jquery.com/jquery-3.1.0.slim.min.js"></script>
+	
 	<!-- Font awesome CDN -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 	
-	<!-- MUI -->
-	<link href="resources/mui/mui.min.css" rel="stylesheet" type="text/css" />
-  <script src="resources/mui/mui.min.js"></script>
+	<!-- Materialize css -->
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
   
   <!-- CSS for this project -->
   <link rel="stylesheet" href="resources/css/style.css">
@@ -14,7 +20,7 @@
 
 <body>
 	
-	<div class="mui-container">
+	<div class="container">
   <!--
   Container is centered on page with 15px of
   padding on either side. The inner width is
@@ -31,8 +37,8 @@
 			<ul>
 				<!-- Loop all in todoList array. -->
 				<li v-for="todo in todoList">
-					<label v-bind:class="{'todo-done': todo.done}">
-						<input type="checkbox" v-bind:checked="todo.done" v-on:change="toggleDoneTodo($index)" />
+					<input type="checkbox" v-bind:checked="todo.done" v-on:change="toggleDoneTodo($index)" id="todo-{{ $index }}" />
+					<label v-bind:class="{'todo-done': todo.done}" for="todo-{{ $index }}">
 						{{ todo.text }}
 					</label>
 
@@ -48,14 +54,11 @@
 			<!-- Do method addTodo when submit -->
 			<!-- with .prevent the submit event will no longer reload the page -->
 			<form v-on:submit.prevent="addTodo">
-				<div class="mui-textfield mui-textfield--float-label">
-					<!-- Bind input to newTodoText data. -->
-					<input name="newTodo" v-model="newTodoText" />
-					
-					<label for="newTodo">Add new todo.</label>
-				</div>
-
-				<button class="mui-btn mui-btn--primary">Add</button>
+				<label for="newTodo">Add new todo.</label>
+				<!-- Bind input to newTodoText data. -->
+				<input name="newTodo" v-model="newTodoText" />
+				
+				<button class="waves-effect waves-light btn">Add</button>
 			</form>
 		</todo>  
 	</div><!-- /.mui-container -->
