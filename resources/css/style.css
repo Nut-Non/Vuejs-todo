@@ -1,4 +1,12 @@
 /* line 1, E:/xampp/htdocs/practices/vuejs/Vuejs-todo/resources/css/style.scss */
+body {
+  font-family: 'Kanit', sans-serif; }
+
+/* line 5, E:/xampp/htdocs/practices/vuejs/Vuejs-todo/resources/css/style.scss */
+h1, h2 {
+  font-weight: 200; }
+
+/* line 9, E:/xampp/htdocs/practices/vuejs/Vuejs-todo/resources/css/style.scss */
 .todo-done {
   text-decoration: line-through; }
 
