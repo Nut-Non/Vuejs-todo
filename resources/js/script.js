@@ -30,6 +30,7 @@ var vue_todo = new Vue({
 		
 		// Remove todo that is marked as done from the list.
 		removeDone: function() {
+			// Use javascript filter to leaveout the undone todo in the array.
 			this.todoList = this.todoList.filter(function (todo) {
 				return !todo.done
 			})
