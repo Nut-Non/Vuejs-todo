@@ -32,7 +32,9 @@
 			</ul>
 
 			<!-- Remove all todo that is marked as done. -->
-			<!-- CODE HERE. -->
+			<form v-on:submit.prevent="removeDone">				
+				<button class="waves-effect waves-light btn">Remove todo</button>
+			</form>
 
 			<!-- Do method addTodo when submit -->
 			<!-- with .prevent the submit event will no longer reload the page -->
